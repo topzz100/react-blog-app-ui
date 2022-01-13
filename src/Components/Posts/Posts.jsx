@@ -1,4 +1,5 @@
 import React from 'react'
+import Post from '../Post/Post'
 import { Content, Wrapper } from './Posts.styles'
 
 const Posts = () => {
@@ -6,7 +7,11 @@ const Posts = () => {
     <>
       <Wrapper>
         <Content>
-          Posts
+          <Post/>
+          <Post/>
+          <Post/>
+          <Post/>
+          <Post/>
         </Content>
       </Wrapper>
     </>
