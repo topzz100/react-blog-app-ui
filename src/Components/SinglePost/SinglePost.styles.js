@@ -13,6 +13,7 @@ export const Content = styled.div`
     width: 100%;
     object-fit: cover;
     height: 300px;
+    border-radius: 5px;
   }
   .postTitle{
     width: 100;
@@ -43,11 +44,10 @@ export const Content = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: .9rem;
+    font-size: 1rem;
     color: #f1de72;
     margin-bottom: 20px;
     h4{
-      font-size: .9rem;
       font-weight: 400;
       span{
         font-weight: 700;
@@ -56,6 +56,7 @@ export const Content = styled.div`
   }
   p{
     font-size: .9rem;
+    line-height: 1.5rem;
     ::first-letter{
       margin-left: 20px;
       font-size: 30px;
