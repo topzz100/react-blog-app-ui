@@ -1,12 +1,14 @@
 import { GlobalStyle } from "./GlobalStyles";
 import Home from "./Pages/Home/Home";
+import Single from "./Pages/Single/Single";
 
 
 function App() {
   return (
     <>
       <GlobalStyle/>
-      <Home/>
+      {/* <Home/> */}
+      <Single/>
     </>
   );
 }
