@@ -12,7 +12,7 @@ background: linear-gradient(
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+    url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     background-size: cover;
    
     height: calc(100vh-50px);
@@ -72,6 +72,5 @@ export const Content = styled.div`
       font-weight: 500;
       width: fit-content;
       margin: 0;
-      border: none;
     }
 `;
