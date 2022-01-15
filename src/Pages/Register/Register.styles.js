@@ -72,5 +72,6 @@ export const Content = styled.div`
       font-weight: 500;
       width: fit-content;
       margin: 0;
+      border: none;
     }
 `;
