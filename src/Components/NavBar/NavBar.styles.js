@@ -38,6 +38,10 @@ export const Content = styled.div`
     .links{
       display: flex;
       justify-content:  center;
+      a{
+        text-decoration: none;
+        color: black;
+      }
       li{
         text-transform: uppercase;
         margin: 0 20px;

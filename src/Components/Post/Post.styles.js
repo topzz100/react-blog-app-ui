@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  padding: 0 30px 30px 20px; 
+  padding: 0 30px 50px 20px; 
 `;
 export const Content = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ export const Content = styled.div`
   h4{
     font-weight: 700;
     font-size: 1.1rem;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
   .time{
     font-size: .8rem;

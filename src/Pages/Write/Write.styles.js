@@ -28,7 +28,7 @@ export const Content = styled.div`
     flex-direction: column;
   }
   .formGroup{
-    margin-top: 20px;
+    margin-top: 30px;
   }
   .inputFile{
     display: flex;
