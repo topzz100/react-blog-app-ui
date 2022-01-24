@@ -20,6 +20,7 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/single" element={<Single />} />
 
       </Routes>
      

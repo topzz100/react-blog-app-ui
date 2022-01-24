@@ -8,6 +8,10 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; 
+  a{
+    text-decoration: none;
+    color: inherit;
+  }
   img{
     width: 100%;
     border-radius: 5px;
@@ -23,6 +27,7 @@ export const Content = styled.div`
     font-weight: 700;
     font-size: 1.1rem;
     margin-bottom: 15px;
+    cursor: pointer;
   }
   .time{
     font-size: .8rem;

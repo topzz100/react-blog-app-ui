@@ -29,6 +29,7 @@ export const Content = styled.div`
       li{
         margin-right: 20px;
         font-size: 1.3rem;
+        cursor: pointer;
       }
       
     }
@@ -47,6 +48,7 @@ export const Content = styled.div`
         margin: 0 20px;
         font-weight: 300;
         font-size: 1.2rem;
+        cursor: pointer;
       }
     }
   }
