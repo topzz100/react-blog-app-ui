@@ -1,8 +1,32 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useContext, useRef } from 'react'
 import NavBar from '../../Components/NavBar/NavBar'
+import context from '../../Context/Context'
 import { Content, Wrapper } from './Login.styles'
 
 const Login = () => {
+    const passwordRef = useRef()
+  const emailRef = useRef()
+  //  const [isError, setIsError] = useState(false)
+  const{dispatch} = useContext(context)
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    dispatch({type: "LOGIN_START"})
+    try{
+      const res = await axios.post('http://127.0.0.1:5500/api/auth/login', 
+      {
+        email: emailRef.current.value,
+        password: passwordRef.current.value
+      })
+
+      dispatch({type: "LOGIN_SUCCESS", payload: res.data})
+      
+    }catch(err){
+      dispatch({type: "LOGIN_FAILURE"})
+      console.log(err);
+    }
+  }
   return (
     <>
       <NavBar/>
@@ -12,10 +36,10 @@ const Login = () => {
           <form action="">
             
             <label htmlFor="">Email</label>
-            <input type="email" placeholder='Smith@mail.com'/>
+            <input type="email" placeholder='Smith@mail.com' ref = {emailRef}/>
             <label htmlFor="">Password</label>
-            <input type="password" placeholder='Password'/>
-            <button type='submit'>Login</button>
+            <input type="password" placeholder='Password' ref={passwordRef}/>
+            <button type='submit' onClick={handleSubmit}>Login</button>
             
           </form>
           <button className='reg'>Register</button>

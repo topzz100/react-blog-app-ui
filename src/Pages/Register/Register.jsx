@@ -1,22 +1,27 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import NavBar from '../../Components/NavBar/NavBar'
 import { Content, Wrapper } from './Register.styles'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
   const passwordRef = useRef()
   const usernameRef = useRef()
   const emailRef = useRef()
+   const [isError, setIsError] = useState(false)
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    setIsError(false)
     try{
-      const res = await axios.post('/api/auth/register', {
+      const res = await axios.post('http://127.0.0.1:5500/api/auth/register', {
         username: usernameRef.current.value,
         email: emailRef.current.value,
         password: passwordRef.current.value
       })
+       res.data && window.location.replace('/login')
     }catch(err){
+      setIsError(true)
       console.log(err);
     }
   }
@@ -33,10 +38,13 @@ const Register = () => {
             <input type="email" placeholder='Smith@mail.com'  ref={emailRef}/>
             <label htmlFor="">Password</label>
             <input type="password" placeholder='Password'  ref={passwordRef}/>
-            <button type='submit'>Register</button>
+            <button type='submit' onClick={handleSubmit}>Register</button>
             
           </form>
-          <button className='reg'>Login</button>
+          <Link to = '/login'>
+             <button className='reg'>Login</button>
+          </Link>
+          {isError && <p style={{color: 'red'}}>something is wrong</p>}
         </Content> 
       </Wrapper> 
     </>
