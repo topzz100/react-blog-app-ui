@@ -2,16 +2,14 @@ import React from 'react'
 import Post from '../Post/Post'
 import { Content, Wrapper } from './Posts.styles'
 
-const Posts = () => {
+const Posts = ({posts}) => {
   return (
     <>
       <Wrapper>
         <Content>
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
+          {posts.map((post) => {
+            return <Post post = {post}/>
+          })}
         </Content>
       </Wrapper>
     </>
