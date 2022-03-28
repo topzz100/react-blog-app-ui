@@ -6,14 +6,14 @@ import context from '../../Context/Context'
 import axios from 'axios'
 
 const Settings = () => {
-    const {user, dispatch, show } = useContext(context)
+    const {user, dispatch } = useContext(context)
   const [file, setFile] = useState(null)
   const[username, setUsername] = useState(user.username)
   const[email, setEmail] = useState(user.email)
   const[password, setPassword] = useState('')
-  const [link, setLink] = useState('')
+  // const [link, setLink] = useState('')
 
-  //  const PF = "http://127.0.0.1:5500/images/";
+   const PF = "http://127.0.0.1:5500/images/";
 
     const filename = Date.now() + file?.name
    const handleUpdate = async(e) => {
@@ -64,7 +64,7 @@ const Settings = () => {
                 file? 
                 <img src={URL.createObjectURL(file)} alt="" />:
                 // 
-                <img src={link} alt="" />
+                <img src={PF+user?.profilePic} alt="" />
               }
               
               <label htmlFor="addImg">
