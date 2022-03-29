@@ -59,6 +59,7 @@ export const Content = styled.div`
     border: none;
     outline: none;
   }
+  
   button{
     position: absolute;
     top: 20px;

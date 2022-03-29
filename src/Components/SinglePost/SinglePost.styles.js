@@ -15,10 +15,22 @@ export const Content = styled.div`
     height: 300px;
     border-radius: 5px;
   }
-  .postTitle{
+   .postTitle{
     width: 100;
     text-align: center;
     position: relative;
+    input{
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      border: none;
+      border-bottom: 1px solid black;
+      outline: none;
+      /* display: flex;
+      border: ; */
+      
+    }
     h4{
       font-size: 1.3rem;
       font-weight: 600;
@@ -63,4 +75,11 @@ export const Content = styled.div`
       font-weight: 600;
     }
   }
+   textarea{
+    border: none;
+    width: 100%;
+    min-height: 200px;
+    outline: none;
+  }
+  
 `;
