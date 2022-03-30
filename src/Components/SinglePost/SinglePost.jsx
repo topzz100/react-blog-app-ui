@@ -37,7 +37,7 @@ const SinglePost = () => {
 
    const handleUpdate = async() => {
      try{
-      await axios.put('http://127.0.0.1:5500/posts/'+ path, {
+      await axios.put('http://127.0.0.1:5500/api/posts/'+ path, {
         username: user.username,
         title,
         desc
@@ -51,7 +51,7 @@ const SinglePost = () => {
 
   const handleDelete = async() => {
     try{
-      await axios.delete('http://127.0.0.1:5500/posts/' + path, {data: {username: user.username}})
+      await axios.delete('http://127.0.0.1:5500/api/posts/' + path, {data: {username: user.username}})
        window.location.replace( '/' )
     }catch(err){
       console.log(err)

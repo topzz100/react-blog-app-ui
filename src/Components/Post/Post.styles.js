@@ -14,6 +14,8 @@ export const Content = styled.div`
   }
   img{
     width: 100%;
+    height: 300px;
+    object-fit: cover;
     border-radius: 5px;
   } 
   .categories{

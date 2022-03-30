@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from "react-router-dom";
+import context from '../../Context/Context';
 import { Wrapper, Content } from './NavBar.styles'
 
 const NavBar = () => {
+   const PF = "http://127.0.0.1:5500/images/";
+  const {user} = useContext(context)
   return (
     <>
       <Wrapper>
@@ -42,7 +45,10 @@ const NavBar = () => {
 
           </div>
           <div className="right">
-            <i class="fas fa-search"></i>
+            <Link to={'/settings'}>
+              <img src = { user.profilePic? PF+user.profilePic : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'}/>
+              <i class="fas fa-search"></i>
+            </Link>
           </div>
         </Content>
       </Wrapper>

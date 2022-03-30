@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Wrapper, Content } from './Post.styles'
 
 const Post = ({post}) => {
+  const PF = "http://127.0.0.1:5500/images/";
   return (
     <>
       <Wrapper>
@@ -21,7 +22,7 @@ const Post = ({post}) => {
           </p> */}
            {post.photo &&
             // (<img src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="" />)
-            (<img src={post.photo} alt="" />)
+            (<img src={PF+post.photo} alt="" />)
           } 
          
           <div className="categories">

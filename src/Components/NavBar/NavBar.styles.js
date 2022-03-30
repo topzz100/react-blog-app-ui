@@ -56,5 +56,13 @@ export const Content = styled.div`
     flex: 3;
     display: flex;
     justify-content: flex-end;
+     /* align-items: center;  */
+    img{
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 10px; 
+    }
   }
 `;
