@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import NavBar from '../../Components/NavBar/NavBar'
+// import NavBar from '../../Components/NavBar/NavBar'
 import { Content, Wrapper } from './Register.styles'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -27,7 +27,7 @@ const Register = () => {
   }
   return (
     <>
-      <NavBar/>
+      {/* <NavBar/> */}
       <Wrapper>
         <Content>
           <h4>Register</h4>

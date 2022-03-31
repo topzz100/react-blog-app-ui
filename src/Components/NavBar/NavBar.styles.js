@@ -39,6 +39,7 @@ export const Content = styled.div`
     .links{
       display: flex;
       justify-content:  center;
+      align-items: center;
       a{
         text-decoration: none;
         color: black;
@@ -51,12 +52,22 @@ export const Content = styled.div`
         cursor: pointer;
       }
     }
+    li.logOut{
+      font-size: 1rem;
+      background-color: lightgray;
+      border-radius: 5px;
+      border: none;
+      color: black;
+      padding: 5px 8px;
+      font-weight: 600;
+      margin-left: 15px;
+    }
   }
   .right{
     flex: 3;
     display: flex;
     justify-content: flex-end;
-     /* align-items: center;  */
+     align-items: center;
     img{
       height: 30px;
       width: 30px;
@@ -64,5 +75,6 @@ export const Content = styled.div`
       object-fit: cover;
       margin-right: 10px; 
     }
+    
   }
 `;

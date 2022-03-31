@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useRef } from 'react'
-import NavBar from '../../Components/NavBar/NavBar'
+import { Link } from 'react-router-dom'
+// import NavBar from '../../Components/NavBar/NavBar'
 import context from '../../Context/Context'
 import { Content, Wrapper } from './Login.styles'
 
@@ -29,7 +30,7 @@ const Login = () => {
   }
   return (
     <>
-      <NavBar/>
+      {/* <NavBar/> */}
       <Wrapper>
         <Content>
           <h4>Login</h4>
@@ -42,7 +43,9 @@ const Login = () => {
             <button type='submit' onClick={handleSubmit}>Login</button>
             
           </form>
-          <button className='reg'>Register</button>
+          <Link to={'/register'}>
+            <button className='reg'>Register</button>
+          </Link>
         </Content> 
       </Wrapper> 
     </>
