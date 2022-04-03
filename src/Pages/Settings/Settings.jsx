@@ -4,9 +4,11 @@ import NavBar from '../../Components/NavBar/NavBar'
 import SideBar from '../../Components/SideBar/SideBar'
 import context from '../../Context/Context'
 import axios from 'axios'
+import MediaNav from '../../Components/MediaNav/MediaNav'
+import MediaSide from '../../Components/MediaSide/MediaSide'
 
 const Settings = () => {
-    const {user, dispatch } = useContext(context)
+    const {user, dispatch, show } = useContext(context)
   const [file, setFile] = useState(null)
   const[username, setUsername] = useState(user.username)
   const[email, setEmail] = useState(user.email)
@@ -50,6 +52,13 @@ const Settings = () => {
   return (
     <>
       <NavBar/>
+       {
+        show &&
+        <div className="mediaSide" >
+          <MediaSide/>
+        </div>
+      }
+      <MediaNav/>
       <Wrapper>
        <Content>
          <Main>
@@ -103,7 +112,9 @@ const Settings = () => {
             <button type="submit">Update</button>
           </form> */}
          </Main>
-         <SideBar/>
+         <div className="sideBar">
+           <SideBar/>
+         </div>
        </Content>
       </Wrapper> 
     </>

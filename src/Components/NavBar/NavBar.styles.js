@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 999;
+  @media(max-width: 700px){
+    display: none;
+  }
 `;
 export const Content = styled.div`
   width: 100%;

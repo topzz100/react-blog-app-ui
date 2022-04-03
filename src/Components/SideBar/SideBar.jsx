@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import context from '../../Context/Context'
+import MediaNav from '../MediaNav/MediaNav'
+import MediaSide from '../MediaSide/MediaSide'
 import { Content, Wrapper } from './SideBar.styles'
 
 const SideBar = () => {
+  const { show } = useContext(context)
   return (
     <>
       <Wrapper>
         <Content>
+             {
+        show &&
+        <div className="mediaSide" >
+          <MediaSide/>
+        </div>
+      }
+          <div className="mediaNav">
+            <MediaNav/>
+          </div>
           <div className="about">
             <h4 className="title">
               ABOUT ME

@@ -8,7 +8,9 @@ export const Content = styled.div`
    .sideBar{
     flex: 3;
     width: 100%;
-    
+    @media(max-width: 700px){
+      display: none;
+    }
   }
   
 `;

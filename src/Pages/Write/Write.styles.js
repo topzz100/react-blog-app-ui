@@ -7,7 +7,9 @@ export const Wrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  
+  @media(max-width: 700px){
+    padding: 20px 10px;
+  }
   
   img{
     /* margin-top: 30px; */
@@ -15,6 +17,9 @@ export const Wrapper = styled.div`
     object-fit: cover;
     border-radius: 10px;
     height: 250px;
+    @media(max-width: 700px){
+      width: 100%;
+    }
   }
 `;
 export const Content = styled.div`
@@ -26,6 +31,9 @@ export const Content = styled.div`
     width: 70%;
     display: flex;
     flex-direction: column;
+     @media(max-width: 700px){
+      width: 100%;
+    }
   }
   .formGroup{
     margin-top: 30px;

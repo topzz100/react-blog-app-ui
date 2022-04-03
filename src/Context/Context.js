@@ -14,6 +14,7 @@ export const ContextProvider = ({children}) => {
   useEffect(()=> {
     sessionStorage.setItem("user", JSON.stringify(state.user))
   }, [state.user])
+   const [show, setShow] = useState(false)
 
   return (
     <>
@@ -21,6 +22,8 @@ export const ContextProvider = ({children}) => {
         user : state.user,
         isFetching: state.isFetching,
         error: state.error,
+        show, 
+        setShow,
         dispatch
       }}>
         {children}  

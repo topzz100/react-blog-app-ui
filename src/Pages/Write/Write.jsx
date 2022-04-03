@@ -3,9 +3,11 @@ import NavBar from '../../Components/NavBar/NavBar'
 import { Content, Wrapper } from './Write.styles'
 import axios from 'axios'
 import context from '../../Context/Context'
+import MediaSide from '../../Components/MediaSide/MediaSide'
+import MediaNav from '../../Components/MediaNav/MediaNav'
 
 const Write = () => {
-    const { user } = useContext(context)
+    const { user, show } = useContext(context)
   const [file, setFile] = useState(null)
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
@@ -48,6 +50,13 @@ const Write = () => {
   return (
     <>
       <NavBar/>
+        {
+        show &&
+        <div className="mediaSide" >
+          <MediaSide/>
+        </div>
+      }
+      <MediaNav/>
       <Wrapper>
          {
           file && <img src={URL.createObjectURL(file)} alt="" />

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  flex: 3;
+  /* flex: 3; */
   width: 100%;
   background-color: #fdfbfb;
 `;
@@ -12,6 +12,14 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  .mediaNav{
+    width: 100%;
+    display: none;
+    @media(max-width: 700px){
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
   .title{
     font-size: 1rem;
     font-weight: 500;

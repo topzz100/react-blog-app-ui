@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   padding: 0 30px 50px 20px; 
+  @media(max-width: 700px){
+    padding: 0 10px 20px;
+  }
 `;
 export const Content = styled.div`
   display: flex;
