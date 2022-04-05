@@ -5,6 +5,8 @@ import axios from 'axios'
 import context from '../../Context/Context'
 import MediaSide from '../../Components/MediaSide/MediaSide'
 import MediaNav from '../../Components/MediaNav/MediaNav'
+import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
+import { storage } from '../../firebase'
 
 const Write = () => {
     const { user, show } = useContext(context)
@@ -15,31 +17,89 @@ const Write = () => {
  
   const filename = Date.now() + file?.name
 
+  // const handleSubmit = async(e) => {
+  //   e.preventDefault()
+  //   // console.log(file, title, desc)
+
+  //   const newPost = {
+  //     username: user.username,
+  //     title,
+  //     desc
+  //   };
+  //   if(file){
+  //     const data = new FormData()
+      
+  //     data.append('name', filename)
+  //     data.append('file', file)
+  //     newPost.photo = filename
+  //       // await upLoadFiles(file)
+  //     try{
+  //       await axios.post('http://127.0.0.1:5500/api/upload', data) 
+  //     }catch(err){
+  //       console.log(err);
+  //     }
+  //   }
+   
+  //   try{
+  //     const res = await axios.post('http://127.0.0.1:5500/api/posts', newPost)
+    
+  //   res.data && window.location.replace('/post/' + res.data._id)
+  //   }catch(err){
+  //     console.log(err);
+  //   }
+  // }
+  
+  // alternative upload to firebase
   const handleSubmit = async(e) => {
     e.preventDefault()
-    // console.log(file, title, desc)
-
-    const newPost = {
-      username: user.username,
-      title,
-      desc
-    };
+    const addPost = {
+        username: user.username,
+        title,
+        desc
+      };
     if(file){
-      const data = new FormData()
-      
-      data.append('name', filename)
-      data.append('file', file)
-      newPost.photo = filename
-        // await upLoadFiles(file)
-      try{
-        await axios.post('http://127.0.0.1:5500/api/upload', data) 
-      }catch(err){
-        console.log(err);
-      }
+      //  const filename = Date.now() + file?.name
+      // const storage = getStorage();
+      const storageRef = ref(storage, 'images/'+filename);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on('state_changed', 
+        (snapshot) => {
+          
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+
+        }, 
+        (error) => {
+          console.log(error)
+        }, 
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log('File available at', downloadURL);
+            addPost.photo = downloadURL
+            uploadPost(addPost)
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+      );
+
     }
-   
-    try{
-      const res = await axios.post('http://127.0.0.1:5500/api/posts', newPost)
+    // try{
+    //   const res = await axios.post('http://127.0.0.1:5500/api/posts', addPost)
+    
+    // res.data && window.location.replace('/post/' + res.data._id)
+    // }catch(err){
+    //   console.log(err);
+    // }
+
+    
+  }
+  const uploadPost = async(upload) => {
+ try{
+      const res = await axios.post('http://127.0.0.1:5500/api/posts', upload)
     
     res.data && window.location.replace('/post/' + res.data._id)
     }catch(err){
