@@ -19,6 +19,7 @@ const Home = () => {
       const res =  await axios.get('http://127.0.0.1:5500/api/posts')
       setPost(res.data)
     }
+    
     fetchPost()
    
    },[])
