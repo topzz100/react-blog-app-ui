@@ -11,7 +11,7 @@ const MediaNav = () => {
       <Content>
             <div className="left">
               <Link to ='/settings'>
-                <img src= { user?.profilePic? (PF + user.profilePic) : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'} alt="" />
+                <img src= { user?.profilePic? (user.profilePic) : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'} alt="" />
               </Link>
             
               

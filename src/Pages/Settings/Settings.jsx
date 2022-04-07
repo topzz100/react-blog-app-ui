@@ -6,6 +6,9 @@ import context from '../../Context/Context'
 import axios from 'axios'
 import MediaNav from '../../Components/MediaNav/MediaNav'
 import MediaSide from '../../Components/MediaSide/MediaSide'
+import { storage } from '../../firebase'
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
+
 
 const Settings = () => {
     const {user, dispatch, show } = useContext(context)
@@ -28,26 +31,76 @@ const Settings = () => {
       email
     };
     if(file){
-      const data = new FormData()
-      
-      data.append('name', filename)
-      data.append('file', file)
-      updatedUser.profilePic = filename
-      try{
-        await axios.post('http://127.0.0.1:5500/api/upload', data)
-      }catch(err){
-        console.log(err);
-      }
+       const storageRef = ref(storage, 'images/'+filename);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      uploadTask.on('state_changed', 
+        (snapshot) => {
+          
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log('Upload is ' + progress + '% done');
+
+        }, 
+        (error) => {
+          console.log(error)
+        }, 
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            console.log('File available at', downloadURL);
+            updatedUser.profilePic = downloadURL
+            updateUser(updatedUser)
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        }
+      );
+
+
     }
+  }
+  const updateUser = async(upload)=> {
     try{
-      const res = await axios.put('http://127.0.0.1:5500/api/users/' + user._id, updatedUser)
+      const res = await axios.put('http://127.0.0.1:5500/api/users/' + user._id, upload)
       dispatch({type: 'UPDATE_SUCCESS', payload: res.data})
       res.data && window.location.replace('/')
     }catch(err){
       dispatch({type: 'UPDATE_FAILURE'})
       console.log(err);
     }
+
   }
+  //  const handleUpdate = async(e) => {
+  //   e.preventDefault()
+  //   dispatch({type: 'UPDATE_START'})
+  //   const updatedUser = {
+  //     userId: user._id,
+  //     username,
+  //     password,
+  //     email
+  //   };
+  //   if(file){
+  //     const data = new FormData()
+      
+  //     data.append('name', filename)
+  //     data.append('file', file)
+  //     updatedUser.profilePic = filename
+  //     try{
+  //       await axios.post('http://127.0.0.1:5500/api/upload', data)
+  //     }catch(err){
+  //       console.log(err);
+  //     }
+  //   }
+  //   try{
+  //     const res = await axios.put('http://127.0.0.1:5500/api/users/' + user._id, updatedUser)
+  //     dispatch({type: 'UPDATE_SUCCESS', payload: res.data})
+  //     res.data && window.location.replace('/')
+  //   }catch(err){
+  //     dispatch({type: 'UPDATE_FAILURE'})
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <>
@@ -73,7 +126,7 @@ const Settings = () => {
                 file? 
                 <img src={URL.createObjectURL(file)} alt="" />:
                 // 
-                <img src={PF+user?.profilePic} alt="" />
+                <img src={user?.profilePic} alt="" />
               }
               
               <label htmlFor="addImg">

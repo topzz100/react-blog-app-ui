@@ -51,7 +51,7 @@ const NavBar = () => {
           </div>
           <div className="right">
             <Link to={'/settings'}>
-              <img src = { user?.profilePic? PF+user?.profilePic : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'}/>
+              <img src = { user?.profilePic? user?.profilePic : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'}/>
             </Link>
             <i class="fas fa-search"></i>
             {/* <button onClick={()=> handleLogOut}>LOG OUT</button> */}

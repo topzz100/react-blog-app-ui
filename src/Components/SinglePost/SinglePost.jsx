@@ -62,7 +62,7 @@ const SinglePost = () => {
       <Wrapper>
         <Content>
           {
-            post.photo && (<img src={PF + post.photo} alt="" />)
+            post.photo && (<img src={ post.photo} alt="" />)
            
           }
            

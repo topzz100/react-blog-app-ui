@@ -9,6 +9,7 @@ const MediaSide = () => {
    const handleLogOut = () => {
     console.log('logOut')
     dispatch({type: 'LOGOUT'})
+     setShow(!show)
   }
    
   return <>
