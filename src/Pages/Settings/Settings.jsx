@@ -16,9 +16,7 @@ const Settings = () => {
   const[username, setUsername] = useState(user.username)
   const[email, setEmail] = useState(user.email)
   const[password, setPassword] = useState('')
-  // const [link, setLink] = useState('')
-
-   const PF = "http://127.0.0.1:5500/images/";
+ 
 
     const filename = Date.now() + file?.name
    const handleUpdate = async(e) => {
@@ -71,6 +69,14 @@ const Settings = () => {
     }
 
   }
+  const handleDelete = async() => {
+    try{
+      axios.delete('http://127.0.0.1:5500/api/users/' + user._id)
+      dispatch({type: 'LOGOUT'})
+    }catch(err){
+      console.log(err);
+    }
+  }
   //  const handleUpdate = async(e) => {
   //   e.preventDefault()
   //   dispatch({type: 'UPDATE_START'})
@@ -117,7 +123,7 @@ const Settings = () => {
          <Main>
            <div className="settingsTitle">
             <span className="update">Update Your Account</span>
-            <span className="del">Delete Account</span>
+            <span className="del" onClick = {handleDelete}>Delete Account</span>
           </div>
           <form action="" onSubmit={handleUpdate}>
             <label htmlFor="">Profile Picture</label>

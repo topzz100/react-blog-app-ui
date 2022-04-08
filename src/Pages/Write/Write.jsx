@@ -5,7 +5,7 @@ import axios from 'axios'
 import context from '../../Context/Context'
 import MediaSide from '../../Components/MediaSide/MediaSide'
 import MediaNav from '../../Components/MediaNav/MediaNav'
-import { getDownloadURL, getStorage, ref, uploadBytesResumable } from 'firebase/storage'
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import { storage } from '../../firebase'
 
 const Write = () => {
@@ -14,52 +14,16 @@ const Write = () => {
   const [title, setTitle] = useState('')
   const [desc, setDesc] = useState('')
 
- 
   const filename = Date.now() + file?.name
 
-  // const handleSubmit = async(e) => {
-  //   e.preventDefault()
-  //   // console.log(file, title, desc)
-
-  //   const newPost = {
-  //     username: user.username,
-  //     title,
-  //     desc
-  //   };
-  //   if(file){
-  //     const data = new FormData()
-      
-  //     data.append('name', filename)
-  //     data.append('file', file)
-  //     newPost.photo = filename
-  //       // await upLoadFiles(file)
-  //     try{
-  //       await axios.post('http://127.0.0.1:5500/api/upload', data) 
-  //     }catch(err){
-  //       console.log(err);
-  //     }
-  //   }
-   
-  //   try{
-  //     const res = await axios.post('http://127.0.0.1:5500/api/posts', newPost)
-    
-  //   res.data && window.location.replace('/post/' + res.data._id)
-  //   }catch(err){
-  //     console.log(err);
-  //   }
-  // }
-  
-  // alternative upload to firebase
   const handleSubmit = async(e) => {
     e.preventDefault()
     const addPost = {
         username: user.username,
         title,
         desc
-      };
+    };
     if(file){
-      //  const filename = Date.now() + file?.name
-      // const storage = getStorage();
       const storageRef = ref(storage, 'images/'+filename);
 
       const uploadTask = uploadBytesResumable(storageRef, file);
@@ -87,14 +51,7 @@ const Write = () => {
       );
 
     }
-    // try{
-    //   const res = await axios.post('http://127.0.0.1:5500/api/posts', addPost)
-    
-    // res.data && window.location.replace('/post/' + res.data._id)
-    // }catch(err){
-    //   console.log(err);
-    // }
-
+ 
     
   }
   const uploadPost = async(upload) => {
@@ -127,7 +84,7 @@ const Write = () => {
           <form action="" onSubmit={handleSubmit}>
             <div className="formGroup inputFile">
               <label htmlFor="addFile" className='addFile'>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </label>
               <input type="file" id='addFile' style={{display : "none"}} onChange = {(e) => {setFile(e.target.files[0])}} />
               <input type="text" className = 'inputTitle' placeholder='Title' autoFocus = {true} onChange = {(e) => {setTitle(e.target.value)}}/>

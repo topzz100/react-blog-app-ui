@@ -5,7 +5,7 @@ import { Content, Wrapper } from './MediaNav.styles';
 
 const MediaNav = () => {
   const {user, setShow, show} = useContext(context) 
-  const PF = "https://holar-blog-app.herokuapp.com/images/";
+
   return <>
     <Wrapper>
       <Content>
@@ -15,10 +15,10 @@ const MediaNav = () => {
               </Link>
             
               
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </div>
             <div className="right">
-              <i class="fas fa-bars" onClick = {() => setShow(!show)}></i>
+              <i className="fas fa-bars" onClick = {() => setShow(!show)}></i>
             </div>
 
         

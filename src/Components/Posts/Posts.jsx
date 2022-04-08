@@ -8,7 +8,7 @@ const Posts = ({posts}) => {
       <Wrapper>
         <Content>
           {posts.map((post) => {
-            return <Post post = {post}/>
+            return <Post post = {post} key={post._id}/>
           })}
         </Content>
       </Wrapper>

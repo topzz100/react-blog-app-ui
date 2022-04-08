@@ -36,16 +36,16 @@ const MediaSide = () => {
               <li onClick = {() => setShow(!show)}>
                 <ul className="socials">
                   <li onClick = {() => setShow(!show)}>
-                    <i class="fab fa-facebook-square"></i>
+                    <i className="fab fa-facebook-square"></i>
                   </li>
                   <li onClick = {() => setShow(!show)}>
-                    <i class="fab fa-instagram-square"></i>
+                    <i className="fab fa-instagram-square"></i>
                   </li>
                   <li onClick = {() => setShow(!show)}>
-                  <i class="fab fa-pinterest-square"></i>
+                  <i className="fab fa-pinterest-square"></i>
                   </li>
                   <li onClick = {() => setShow(!show)}>
-                    <i class="fab fa-twitter-square"></i>
+                    <i className="fab fa-twitter-square"></i>
                   </li>
             </ul>
               </li>

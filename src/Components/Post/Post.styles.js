@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   padding: 0 30px 50px 20px; 
   @media(max-width: 700px){
     padding: 0 10px 20px;
+    margin-top: 20px;
   }
 `;
 export const Content = styled.div`

@@ -4,7 +4,6 @@ import context from '../../Context/Context';
 import { Wrapper, Content } from './NavBar.styles'
 
 const NavBar = () => {
-   const PF = "http://127.0.0.1:5500/images/";
   const {user, dispatch} = useContext(context)
 
   const handleLogOut = () => {
@@ -18,16 +17,16 @@ const NavBar = () => {
           <div className="left">
             <ul className="socials">
               <li>
-                <i class="fab fa-facebook-square"></i>
+                <i className="fab fa-facebook-square"></i>
               </li>
               <li>
-                <i class="fab fa-instagram-square"></i>
+                <i className="fab fa-instagram-square"></i>
               </li>
               <li>
-               <i class="fab fa-pinterest-square"></i>
+               <i className="fab fa-pinterest-square"></i>
               </li>
               <li>
-                <i class="fab fa-twitter-square"></i>
+                <i className="fab fa-twitter-square"></i>
               </li>
             </ul>
           </div>
@@ -51,10 +50,9 @@ const NavBar = () => {
           </div>
           <div className="right">
             <Link to={'/settings'}>
-              <img src = { user?.profilePic? user?.profilePic : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'}/>
+              <img src = { user?.profilePic? user?.profilePic : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'} alt=''/>
             </Link>
-            <i class="fas fa-search"></i>
-            {/* <button onClick={()=> handleLogOut}>LOG OUT</button> */}
+            <i className="fas fa-search"></i>
           </div>
         </Content>
       </Wrapper>

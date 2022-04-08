@@ -15,14 +15,12 @@ const Login = () => {
     e.preventDefault()
     dispatch({type: "LOGIN_START"})
     try{
-      const res = await axios.post('http://127.0.0.1:5500/api/auth/login', 
+        const res = await axios.post('http://127.0.0.1:5500/api/auth/login', 
       {
         email: emailRef.current.value,
         password: passwordRef.current.value
       })
-
       dispatch({type: "LOGIN_SUCCESS", payload: res.data})
-      
     }catch(err){
       dispatch({type: "LOGIN_FAILURE"})
       console.log(err);
