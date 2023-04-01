@@ -4,7 +4,7 @@ import context from '../../Context/Context';
 import { Wrapper, Content } from './NavBar.styles'
 
 const NavBar = () => {
-   const PF = "http://127.0.0.1:5500/images/";
+   const PF = `${process.env.REACT_APP_BASE_URL}/images/`;
   const {user, dispatch} = useContext(context)
 
   const handleLogOut = () => {

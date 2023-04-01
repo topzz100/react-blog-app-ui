@@ -6,6 +6,7 @@ import context from '../../Context/Context'
 import axios from 'axios'
 import MediaNav from '../../Components/MediaNav/MediaNav'
 import MediaSide from '../../Components/MediaSide/MediaSide'
+import { axiosInstance } from '../../config'
 
 const Settings = () => {
     const {user, dispatch, show } = useContext(context)
@@ -15,7 +16,7 @@ const Settings = () => {
   const[password, setPassword] = useState('')
   // const [link, setLink] = useState('')
 
-   const PF = "http://127.0.0.1:5500/images/";
+   const PF = `${process.env.REACT_APP_BASE_URL}/images/`;
 
     const filename = Date.now() + file?.name
    const handleUpdate = async(e) => {
@@ -34,13 +35,13 @@ const Settings = () => {
       data.append('file', file)
       updatedUser.profilePic = filename
       try{
-        await axios.post('http://127.0.0.1:5500/api/upload', data)
+        await axios.post('/upload', data)
       }catch(err){
         console.log(err);
       }
     }
     try{
-      const res = await axios.put('http://127.0.0.1:5500/api/users/' + user._id, updatedUser)
+      const res = await axiosInstance.put('/users/' + user._id, updatedUser)
       dispatch({type: 'UPDATE_SUCCESS', payload: res.data})
       res.data && window.location.replace('/')
     }catch(err){

@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import { Content, Wrapper } from './Register.styles'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { axiosInstance } from '../../config'
 
 const Register = () => {
   const passwordRef = useRef()
@@ -14,7 +15,7 @@ const Register = () => {
     e.preventDefault()
     setIsError(false)
     try{
-      const res = await axios.post('http://127.0.0.1:5500/api/auth/register', {
+      const res = await axiosInstance.post('/auth/register', {
         username: usernameRef.current.value,
         email: emailRef.current.value,
         password: passwordRef.current.value

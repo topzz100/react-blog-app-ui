@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useContext, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { axiosInstance } from '../../config'
 // import NavBar from '../../Components/NavBar/NavBar'
 import context from '../../Context/Context'
 import { Content, Wrapper } from './Login.styles'
@@ -15,7 +16,7 @@ const Login = () => {
     e.preventDefault()
     dispatch({type: "LOGIN_START"})
     try{
-      const res = await axios.post('http://127.0.0.1:5500/api/auth/login', 
+      const res = await axiosInstance.post('/auth/login', 
       {
         email: emailRef.current.value,
         password: passwordRef.current.value

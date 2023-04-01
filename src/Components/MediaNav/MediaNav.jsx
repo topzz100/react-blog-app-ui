@@ -5,7 +5,7 @@ import { Content, Wrapper } from './MediaNav.styles';
 
 const MediaNav = () => {
   const {user, setShow, show} = useContext(context) 
-  const PF = "https://holar-blog-app.herokuapp.com/images/";
+  const PF = `${process.env.REACT_APP_BASE_URL}/images/`;
   return <>
     <Wrapper>
       <Content>

@@ -8,6 +8,7 @@ import context from '../../Context/Context'
 import axios from 'axios'
 import MediaSide from '../../Components/MediaSide/MediaSide'
 import MediaNav from '../../Components/MediaNav/MediaNav'
+import { axiosInstance } from '../../config'
 
 const Home = () => {
   const{show} = useContext(context)
@@ -16,7 +17,7 @@ const Home = () => {
 
   useEffect(()=>{
     const fetchPost = async() => {
-      const res =  await axios.get('http://127.0.0.1:5500/api/posts')
+      const res =  await axiosInstance.get('/posts')
       setPost(res.data)
     }
     fetchPost()

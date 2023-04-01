@@ -5,6 +5,7 @@ import axios from 'axios'
 import context from '../../Context/Context'
 import MediaSide from '../../Components/MediaSide/MediaSide'
 import MediaNav from '../../Components/MediaNav/MediaNav'
+import { axiosInstance } from '../../config'
 
 const Write = () => {
     const { user, show } = useContext(context)
@@ -32,14 +33,14 @@ const Write = () => {
       newPost.photo = filename
         // await upLoadFiles(file)
       try{
-        await axios.post('http://127.0.0.1:5500/api/upload', data) 
+        await axiosInstance.post('/upload', data) 
       }catch(err){
         console.log(err);
       }
     }
    
     try{
-      const res = await axios.post('http://127.0.0.1:5500/api/posts', newPost)
+      const res = await axiosInstance.post('/posts', newPost)
     
     res.data && window.location.replace('/post/' + res.data._id)
     }catch(err){

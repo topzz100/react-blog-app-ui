@@ -3,13 +3,14 @@ import { Content, Wrapper } from './SinglePost.styles'
 import axios from 'axios'
 import context from '../../Context/Context'
 import { useLocation } from 'react-router-dom'
+import { axiosInstance } from '../../config'
 
 const SinglePost = () => {
   const {user} = useContext(context)
    const location = useLocation()
    const path = location.pathname.split('/')[2]
 
-  const PF = "http://127.0.0.1:5500/images/";
+  const PF = `${process.env.REACT_APP_BASE_URL}/images/`;
   
    const [post, setPost] = useState([])
    const [title, setTitle] = useState('')
@@ -21,7 +22,7 @@ const SinglePost = () => {
    useEffect(() => {
       const fetchSinglePost = async() => {
        try{
-          const res = await axios.get('http://127.0.0.1:5500/api/posts/'+ path)
+          const res = await axiosInstance.get('/posts/'+ path)
             setPost(res.data);
             setTitle(res.data.title)
             setDesc(res.data.desc)
@@ -37,7 +38,7 @@ const SinglePost = () => {
 
    const handleUpdate = async() => {
      try{
-      await axios.put('http://127.0.0.1:5500/api/posts/'+ path, {
+      await axiosInstance.put('/posts/'+ path, {
         username: user.username,
         title,
         desc
@@ -51,7 +52,7 @@ const SinglePost = () => {
 
   const handleDelete = async() => {
     try{
-      await axios.delete('http://127.0.0.1:5500/api/posts/' + path, {data: {username: user.username}})
+      await axios.delete('/posts/' + path, {data: {username: user.username}})
        window.location.replace( '/' )
     }catch(err){
       console.log(err)

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Wrapper, Content } from './Post.styles'
 
 const Post = ({post}) => {
-  const PF = "http://127.0.0.1:5500/images/";
+  const PF = `${process.env.REACT_APP_BASE_URL}/images/`;
   return (
     <>
       <Wrapper>
